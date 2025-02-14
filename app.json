@@ -1,0 +1,9 @@
+{
+  "expo": {
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true
+  },
+  "plugins": [
+    "expo-video"
+  ]
+}
