@@ -1,7 +1,10 @@
-import React from 'react';
-import {View, StyleSheet, Pressable} from 'react-native';
-import TrackPlayer, {State, usePlaybackState} from 'react-native-track-player';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import React from "react";
+import { View, StyleSheet, Pressable } from "react-native";
+import TrackPlayer, {
+  State,
+  usePlaybackState,
+} from "react-native-track-player";
+import Icon from "react-native-vector-icons/MaterialIcons";
 
 const ControlCenter = () => {
   const playBackState = usePlaybackState();
@@ -34,7 +37,7 @@ const ControlCenter = () => {
       <Pressable onPress={() => togglePlayback(playBackState)}>
         <Icon
           style={styles.playButton}
-          name={playBackState === State.Playing ? 'pause' : 'play-arrow'}
+          name={playBackState === State.Playing ? "pause" : "play-arrow"}
           size={75}
         />
       </Pressable>
@@ -49,14 +52,14 @@ const styles = StyleSheet.create({
   container: {
     marginBottom: 56,
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   icon: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
   },
   playButton: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     marginHorizontal: 24,
   },
 });

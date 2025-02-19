@@ -1,7 +1,7 @@
-import TrackPlayer from 'react-native-track-player';
-import {Event} from 'react-native-track-player';
+import TrackPlayer from "react-native-track-player";
+import { Event } from "react-native-track-player";
 
-import {playListData} from './src/constants';
+import { playListData } from "./src/radioStreams";
 
 export async function setupPlayer() {
   let isSetup = false;
