@@ -1,4 +1,28 @@
+# Grupo Radar Radio - Mobile Application
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+
+## Currently Necessary Setup Steps
+
+### Disable New Architecture
+
+This application currently uses react-native modules that do not support React Native - New Architecture. As such this needs to be disabled for Android and iOS.
+
+**Android**
+
+- Set `NewArchitecture:false` in android/build.gradle
+
+**iOS**
+
+- `RCT_NEW_ARCH_ENABLED=0 pod install` if errors present while running application on iOS.
+
+### Disable User Script Sandboxing (iOS)
+
+This step is partly related to a new feature enabled in XCode that creates a sandbox while building the IOS application. This will break if the sandbox cannot access the files needed while building the application in XCode. If issue presents, disable User Script Sandboxing in XCode on this project.
+
+### React Native Track Player Version 3.2
+
+This application's radio stream player was designed based on React-Native-Track-Player v3.2 and is incompatible with v4.0^ **Essentially** use version 3.2 until code is updated to function with version 4.0 and beyond.
 
 # Getting Started
 
@@ -13,9 +37,6 @@ To start the Metro dev server, run the following command from the root of your R
 ```sh
 # Using npm
 npm start
-
-# OR using Yarn
-yarn start
 ```
 
 ## Step 2: Build and run your app
@@ -27,9 +48,6 @@ With Metro running, open a new terminal window/pane from the root of your React 
 ```sh
 # Using npm
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
 ### iOS
@@ -53,9 +71,6 @@ For more information, please visit [CocoaPods Getting Started guide](https://gui
 ```sh
 # Using npm
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
 If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
