@@ -14,7 +14,7 @@ This application currently uses react-native modules that do not support React N
 
 **iOS**
 
-- `RCT_NEW_ARCH_ENABLED=0 pod install` if errors present while running application on iOS.
+- `RCT_NEW_ARCH_ENABLED=0 pod install` from ./ios/ directory.
 
 ### Disable User Script Sandboxing (iOS)
 
