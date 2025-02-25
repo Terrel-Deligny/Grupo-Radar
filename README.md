@@ -22,6 +22,8 @@ This step is partly related to a new feature enabled in XCode that creates a san
 
 ### React Native Track Player Version 3.2
 
+### **_UPDATED TO V4.1 AND STILL TESTING_**
+
 This application's radio stream player was designed based on React-Native-Track-Player v3.2 and is incompatible with v4.0^ **Essentially** use version 3.2 until code is updated to function with version 4.0 and beyond.
 
 # Getting Started
