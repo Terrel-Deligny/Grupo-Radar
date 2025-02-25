@@ -4,7 +4,9 @@ import TrackPlayer, {State, usePlaybackState} from 'react-native-track-player';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const ControlCenter = () => {
-  const playBackState = usePlaybackState();
+  //const playBackState = TrackPlayer.;
+  const playbackState = usePlaybackState().state;
+  playbackState === State.Ready;
   //Next Button
   const skipToNext = async () => {
     await TrackPlayer.skipToNext();
@@ -14,14 +16,17 @@ const ControlCenter = () => {
     await TrackPlayer.skipToPrevious();
   };
 
+  //Toggle Playback
   const togglePlayback = async (playback: State) => {
-    const currentTrack = await TrackPlayer.getCurrentTrack();
+    const currentTrack = await TrackPlayer.getActiveTrack();
 
     if (currentTrack !== null) {
       if (playback === State.Paused || playback === State.Ready) {
         await TrackPlayer.play();
+        console.log('The player is playing');
       } else {
         await TrackPlayer.pause();
+        console.log('The player is paused');
       }
     }
   };
@@ -31,10 +36,10 @@ const ControlCenter = () => {
       <Pressable onPress={skipToPrevious}>
         <Icon style={styles.icon} name="skip-previous" size={40} />
       </Pressable>
-      <Pressable onPress={() => togglePlayback(playBackState)}>
+      <Pressable onPress={() => togglePlayback(playbackState!)}>
         <Icon
           style={styles.playButton}
-          name={playBackState === State.Playing ? 'pause' : 'play-arrow'}
+          name={playbackState === State.Playing ? 'pause' : 'play-arrow'}
           size={75}
         />
       </Pressable>
