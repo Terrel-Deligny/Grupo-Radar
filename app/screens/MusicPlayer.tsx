@@ -15,10 +15,11 @@ const {width} = Dimensions.get('window');
 const MusicPlayer = () => {
   const [track, setTrack] = useState<Track | null>();
 
-  useTrackPlayerEvents([Event.PlaybackTrackChanged], async event => {
+  useTrackPlayerEvents([Event.PlaybackActiveTrackChanged], async event => {
     switch (event.type) {
-      case Event.PlaybackTrackChanged:
-        const playingTrack = await TrackPlayer.getTrack(event.nextTrack);
+      case Event.PlaybackActiveTrackChanged:
+        //const playingTrack = await TrackPlayer.getTrack(event.nextTrack);
+        const playingTrack = await TrackPlayer.getActiveTrack();
         setTrack(playingTrack);
         break;
     }
