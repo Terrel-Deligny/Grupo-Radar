@@ -17,6 +17,7 @@ export async function setupPlayer() {
 }
 
 export async function addTrack() {
+  await TrackPlayer.reset();
   await TrackPlayer.add(playListData);
 }
 
@@ -28,9 +29,11 @@ export async function playbackService() {
     TrackPlayer.play();
   });
   TrackPlayer.addEventListener(Event.RemoteNext, () => {
+    TrackPlayer.reset();
     TrackPlayer.skipToNext();
   });
   TrackPlayer.addEventListener(Event.RemotePrevious, () => {
+    TrackPlayer.reset();
     TrackPlayer.skipToPrevious();
   });
 }

@@ -3,7 +3,6 @@ import {
   ActivityIndicator,
   SafeAreaView,
   StatusBar,
-  StyleSheet,
   Text,
   View,
 } from 'react-native';
@@ -40,18 +39,12 @@ function App(): React.JSX.Element {
   return (
     <View className="flex-1 bg-green-300 justify-center items-center">
       <Text className="text-lg font-bold">Grupo Radar Radio</Text>
-      <View style={styles.container}>
-        <StatusBar barStyle={'light-content'} />
+      <View>
+        <StatusBar className="flex-2" barStyle={'light-content'} />
         <MusicPlayer />
       </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
