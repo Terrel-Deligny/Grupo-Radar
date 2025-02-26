@@ -6,16 +6,16 @@ export default function NavigationBar(props: { handleClick: (arg0: string) => vo
     const [activeBtn, setActiveBtn] = useState('radio');
 
     return (
-        <HStack bgColor="gray" width="$full">
-            <Pressable flex={1} alignItems='center' justifyContent='center' bgColor={activeBtn === 'radio' ? '#0077E6' : 'transparent'} onPressIn={() => props.handleClick('radio') } onPress={() => setActiveBtn('radio')}>
+        <HStack width="$full">
+            <Pressable flex={1} alignItems='center' justifyContent='center' bgColor= '#2F3228' onPressIn={() => props.handleClick('radio') } onPress={() => setActiveBtn('radio')}>
                 <Box py="$8">
-                    <Text>Radio</Text>
+                    <Text style= {{ fontSize: 32, fontWeight: 'bold', fontFamily: "League Spartan", color: "white", letterSpacing: 2.5}}>RADIO</Text>
                 </Box>
             </Pressable>
 
-            <Pressable flex={1} alignItems='center' justifyContent='center' bgColor={activeBtn === 'tv' ? '#0077E6' : 'transparent'} onPressIn={() => props.handleClick('tv')} onPress={() => setActiveBtn('tv')} >
+            <Pressable flex={1} alignItems='center' justifyContent='center' bgColor= '#7D8F40' onPressIn={() => props.handleClick('tv')} onPress={() => setActiveBtn('tv')} >
                 <Box py="$8">
-                    <Text>TV</Text>
+                    <Text style= {{ fontSize: 32, fontWeight: 'bold', fontFamily: "League Spartan", color: "white", letterSpacing: 2.5}}>TV</Text>
                 </Box>
             </Pressable>
         </HStack>
