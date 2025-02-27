@@ -1,5 +1,4 @@
 import React from 'react'
-import { Box, Button, ButtonText } from '@gluestack-ui/themed'
 import { View, StyleSheet, Image, TouchableOpacity, Dimensions } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 
