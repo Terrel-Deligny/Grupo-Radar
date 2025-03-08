@@ -7,6 +7,7 @@ import TrackPlayer, {
   useTrackPlayerEvents,
 } from 'react-native-track-player';
 import {playListData} from '../assets/data/radioStreams';
+
 import SongInfo from '../components/SongInfo';
 import ControlCenter from '../components/ControlCenter';
 

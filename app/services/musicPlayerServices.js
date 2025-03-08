@@ -2,8 +2,8 @@ import TrackPlayer, {
   Capability,
   AppKilledPlaybackBehavior,
   Event,
+  RepeatMode,
 } from 'react-native-track-player';
-//mport {Event} from 'react-native-track-player';
 
 import {playListData} from '../assets/data/radioStreams';
 
@@ -22,6 +22,7 @@ export async function setupPlayer() {
 
 export async function addTrack() {
   await TrackPlayer.add(playListData);
+  await TrackPlayer.setRepeatMode(RepeatMode.Queue);
 }
 
 export async function playbackService() {
@@ -41,10 +42,9 @@ export async function playbackService() {
     console.log('Event.RemotePrevious');
     TrackPlayer.skipToPrevious();
   });
-  /* TrackPlayer.addEventListener(Event.RemoteStop, () => {
+  TrackPlayer.addEventListener(Event.RemoteStop, () => {
     TrackPlayer.stop();
   });
-    */
 
   await TrackPlayer.updateOptions({
     android: {
@@ -68,8 +68,9 @@ export async function playbackService() {
       Capability.SkipToPrevious,
       Capability.Stop,
     ],
+
     // Capabilities that will show up when the notification is in the compact form on Android
-    compactCapabilities: [Capability.Play, Capability.Pause],
+    /** compactCapabilities: [Capability.Play, Capability.Pause],
 
     notificationCapabilities: [
       Capability.Play,
@@ -78,5 +79,6 @@ export async function playbackService() {
       Capability.SkipToPrevious,
       Capability.Stop,
     ],
+    */
   });
 }

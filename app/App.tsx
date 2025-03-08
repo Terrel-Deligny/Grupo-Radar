@@ -10,7 +10,7 @@ import {
 import {setupPlayer, addTrack} from './services/musicPlayerServices';
 import MusicPlayer from './screens/MusicPlayer';
 import '../global.css';
-import TrackPlayer from 'react-native-track-player';
+//import TrackPlayer from 'react-native-track-player';
 
 function App(): React.JSX.Element {
   const [isPlayerReady, setIsPlayerReady] = useState(false);
@@ -40,7 +40,6 @@ function App(): React.JSX.Element {
 
   return (
     <View className="flex-1 bg-green-300 justify-center items-center">
-      <Text className="text-lg font-bold">Grupo Radar Radio</Text>
       <View>
         <StatusBar className="flex-2" barStyle={'light-content'} />
         <MusicPlayer />
