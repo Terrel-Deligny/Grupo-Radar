@@ -1,7 +1,7 @@
 import TrackPlayer from 'react-native-track-player';
 //mport {Event} from 'react-native-track-player';
 
-import {playListData} from '../radioStreams';
+import {playListData} from '../assets/data/radioStreams';
 
 export async function setupPlayer() {
   let isSetup = false;
@@ -32,5 +32,8 @@ export async function playbackService() {
   });
   TrackPlayer.addEventListener('remote-previous', () => {
     TrackPlayer.skipToPrevious();
+  });
+  TrackPlayer.addEventListener('remote-stop', () => {
+    TrackPlayer.destroy();
   });
 }
