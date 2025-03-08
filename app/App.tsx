@@ -10,7 +10,7 @@ import {
 import {setupPlayer, addTrack} from './services/musicPlayerServices';
 import MusicPlayer from './screens/MusicPlayer';
 import '../global.css';
-import TrackPlayer, {Capability} from 'react-native-track-player';
+import TrackPlayer from 'react-native-track-player';
 
 function App(): React.JSX.Element {
   const [isPlayerReady, setIsPlayerReady] = useState(false);
@@ -20,17 +20,6 @@ function App(): React.JSX.Element {
     console.log(isSetup);
 
     if (isSetup) {
-      await TrackPlayer.updateOptions({
-        capabilities: [
-          Capability.Play,
-          Capability.Pause,
-          Capability.SkipToNext,
-          Capability.SkipToPrevious,
-        ],
-        // Capabilities that will show up when the notification is in the compact form on Android
-        compactCapabilities: [Capability.Play, Capability.Pause],
-        //notificationCapabilities: [Capability.Play, Capability.Pause],
-      });
       await addTrack();
     }
 

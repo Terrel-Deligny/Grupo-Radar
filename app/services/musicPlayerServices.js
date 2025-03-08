@@ -1,4 +1,4 @@
-import TrackPlayer from 'react-native-track-player';
+import TrackPlayer, {Capability} from 'react-native-track-player';
 //mport {Event} from 'react-native-track-player';
 
 import {playListData} from '../assets/data/radioStreams';
@@ -34,6 +34,19 @@ export async function playbackService() {
     TrackPlayer.skipToPrevious();
   });
   TrackPlayer.addEventListener('remote-stop', () => {
-    TrackPlayer.destroy();
+    TrackPlayer.stop();
+  });
+
+  await TrackPlayer.updateOptions({
+    stoppingAppPausesPlayback: true,
+    capabilities: [
+      Capability.Play,
+      Capability.Pause,
+      Capability.SkipToNext,
+      Capability.SkipToPrevious,
+    ],
+    // Capabilities that will show up when the notification is in the compact form on Android
+    compactCapabilities: [Capability.Play, Capability.Pause],
+    //notificationCapabilities: [Capability.Play, Capability.Pause],
   });
 }
