@@ -1,6 +1,7 @@
 import TrackPlayer, {
   Capability,
   AppKilledPlaybackBehavior,
+  Event,
 } from 'react-native-track-player';
 //mport {Event} from 'react-native-track-player';
 
@@ -24,21 +25,26 @@ export async function addTrack() {
 }
 
 export async function playbackService() {
-  TrackPlayer.addEventListener('remote-play', () => {
+  TrackPlayer.addEventListener(Event.RemotePlay, () => {
+    console.log('Event.RemotePause');
     TrackPlayer.pause();
   });
-  TrackPlayer.addEventListener('remote-pause', () => {
+  TrackPlayer.addEventListener(Event.RemotePause, () => {
+    console.log('Event.RemotePlay');
     TrackPlayer.play();
   });
-  TrackPlayer.addEventListener('remote-next', () => {
+  TrackPlayer.addEventListener(Event.RemoteNext, () => {
+    console.log('Event.RemoteNext');
     TrackPlayer.skipToNext();
   });
-  TrackPlayer.addEventListener('remote-previous', () => {
+  TrackPlayer.addEventListener(Event.RemotePrevious, () => {
+    console.log('Event.RemotePrevious');
     TrackPlayer.skipToPrevious();
   });
-  TrackPlayer.addEventListener('remote-stop', () => {
+  /* TrackPlayer.addEventListener(Event.RemoteStop, () => {
     TrackPlayer.stop();
   });
+    */
 
   await TrackPlayer.updateOptions({
     android: {
@@ -60,9 +66,17 @@ export async function playbackService() {
       Capability.Pause,
       Capability.SkipToNext,
       Capability.SkipToPrevious,
+      Capability.Stop,
     ],
     // Capabilities that will show up when the notification is in the compact form on Android
     compactCapabilities: [Capability.Play, Capability.Pause],
-    //notificationCapabilities: [Capability.Play, Capability.Pause],
+
+    notificationCapabilities: [
+      Capability.Play,
+      Capability.Pause,
+      Capability.SkipToNext,
+      Capability.SkipToPrevious,
+      Capability.Stop,
+    ],
   });
 }
