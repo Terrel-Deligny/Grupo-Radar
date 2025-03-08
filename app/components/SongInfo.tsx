@@ -1,6 +1,8 @@
 import React, {PropsWithChildren} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
 import {Track} from 'react-native-track-player';
+
+const {width} = Dimensions.get('window');
 
 type SongInfoProps = PropsWithChildren<{
   track: Track | null | undefined;
@@ -8,25 +10,37 @@ type SongInfoProps = PropsWithChildren<{
 
 const SongInfo = ({track}: SongInfoProps) => {
   return (
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.name}>{track?.title}</Text>
-        <Text style={styles.artist}>{track?.artist}</Text>
+    <View>
+      <View style={styles.containerArtwork}>
+        <View style={styles.listArtWrapper}>
+          <View style={styles.albumContainer}>
+            <Image source={{uri: track?.artwork}} style={styles.albumArtImg} />
+          </View>
+        </View>
+      </View>
+      <View style={styles.containerControls}>
+        <View>
+          <Text style={styles.name}>{track?.title}</Text>
+          <Text style={styles.artist}>{track?.artist}</Text>
+        </View>
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    width: '90%',
+  containerControls: {
+    width: '100%',
     marginTop: 18,
 
     flexDirection: 'row',
     alignItems: 'baseline',
     justifyContent: 'center',
-    borderTopWidth: 0.7,
-    borderTopColor: '#fff',
+  },
+  containerArtwork: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#001d23',
   },
   name: {
     marginBottom: 8,
@@ -40,7 +54,19 @@ const styles = StyleSheet.create({
     color: '#d9d9d9',
     textAlign: 'center',
   },
-  artwork: {},
+  albumArtImg: {
+    height: '100%',
+    borderRadius: 4,
+  },
+  albumContainer: {
+    width: 300,
+    height: 300,
+  },
+  listArtWrapper: {
+    width: width,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 export default SongInfo;

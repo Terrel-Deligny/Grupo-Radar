@@ -56,7 +56,7 @@ export async function playbackService() {
           This option will pause playing audio in the background when the app is removed from recents. The notification remains and can be used to resume playback.
 
         StopPlaybackAndRemoveNotification
-          This option will stop playing audio in the background when the app is removed from recents. The notification is removed and can't be used to resume playback. Users would need to open the app again to start playing audio.  
+          This option will stop playing audio in the background when the app is removed from recents. The notification is removed and can't be used to resume playback. Users would need to open the app again to start playing audio.
        */
       appKilledPlaybackBehavior:
         AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification,
@@ -70,7 +70,12 @@ export async function playbackService() {
     ],
 
     // Capabilities that will show up when the notification is in the compact form on Android
-    /** compactCapabilities: [Capability.Play, Capability.Pause],
+    compactCapabilities: [
+      Capability.Play,
+      Capability.Pause,
+      Capability.SkipToNext,
+      Capability.SkipToPrevious,
+    ],
 
     notificationCapabilities: [
       Capability.Play,
@@ -79,6 +84,5 @@ export async function playbackService() {
       Capability.SkipToPrevious,
       Capability.Stop,
     ],
-    */
   });
 }

@@ -1,11 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {
-  ActivityIndicator,
-  SafeAreaView,
-  StatusBar,
-  Text,
-  View,
-} from 'react-native';
+import {ActivityIndicator, SafeAreaView, View} from 'react-native';
 
 import {setupPlayer, addTrack} from './services/musicPlayerServices';
 import MusicPlayer from './screens/MusicPlayer';
@@ -18,11 +12,9 @@ function App(): React.JSX.Element {
   async function setup() {
     let isSetup = await setupPlayer();
     console.log(isSetup);
-
     if (isSetup) {
       await addTrack();
     }
-
     setIsPlayerReady(isSetup);
   }
 
@@ -41,7 +33,6 @@ function App(): React.JSX.Element {
   return (
     <View className="flex-1 bg-green-300 justify-center items-center">
       <View>
-        <StatusBar className="flex-2" barStyle={'light-content'} />
         <MusicPlayer />
       </View>
     </View>

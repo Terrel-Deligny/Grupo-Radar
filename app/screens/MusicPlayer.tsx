@@ -1,17 +1,14 @@
 import React, {useState} from 'react';
-import {Dimensions, FlatList, Image, StyleSheet, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 import TrackPlayer, {
   Event,
   Track,
   useTrackPlayerEvents,
 } from 'react-native-track-player';
-import {playListData} from '../assets/data/radioStreams';
 
 import SongInfo from '../components/SongInfo';
 import ControlCenter from '../components/ControlCenter';
-
-const {width} = Dimensions.get('window');
 
 const MusicPlayer = () => {
   const [track, setTrack] = useState<Track | null>();
@@ -27,28 +24,8 @@ const MusicPlayer = () => {
     }
   });
 
-  const renderArtWork = () => {
-    return (
-      <View style={styles.listArtWrapper}>
-        <View style={styles.albumContainer}>
-          {track?.artwork && (
-            <Image
-              style={styles.albumArtImg}
-              source={{uri: track?.artwork?.toString()}}
-            />
-          )}
-        </View>
-      </View>
-    );
-  };
   return (
     <View style={styles.container}>
-      <FlatList
-        horizontal
-        data={playListData}
-        renderItem={renderArtWork}
-        keyExtractor={song => song.id.toString()}
-      />
       <SongInfo track={track} />
       <ControlCenter />
     </View>
@@ -61,19 +38,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#001d23',
-  },
-  listArtWrapper: {
-    width: width,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  albumContainer: {
-    width: 300,
-    height: 300,
-  },
-  albumArtImg: {
-    height: '100%',
-    borderRadius: 4,
   },
 });
 
