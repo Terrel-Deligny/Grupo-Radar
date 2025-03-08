@@ -1,4 +1,7 @@
-import TrackPlayer, {Capability} from 'react-native-track-player';
+import TrackPlayer, {
+  Capability,
+  AppKilledPlaybackBehavior,
+} from 'react-native-track-player';
 //mport {Event} from 'react-native-track-player';
 
 import {playListData} from '../assets/data/radioStreams';
@@ -38,7 +41,11 @@ export async function playbackService() {
   });
 
   await TrackPlayer.updateOptions({
-    stoppingAppPausesPlayback: true,
+    android: {
+      // This is the default behavior
+      appKilledPlaybackBehavior:
+        AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification,
+    },
     capabilities: [
       Capability.Play,
       Capability.Pause,
