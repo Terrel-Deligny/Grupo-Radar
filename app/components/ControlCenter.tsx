@@ -4,7 +4,6 @@ import TrackPlayer, {State, usePlaybackState} from 'react-native-track-player';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const ControlCenter = () => {
-  //const playBackState = TrackPlayer.;
   const playbackState = usePlaybackState().state;
   playbackState === State.None;
   //Next Button
