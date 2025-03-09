@@ -6,14 +6,16 @@
  */
 
 import React from 'react';
-import {Text, View} from 'react-native';
-import '../global.css';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import CarouselPoster from './components/carouselPoster';
+import NewsSection from './components/newsSection';
 
 function App() {
   return (
-    <View className="flex-1 bg-green-300 justify-center items-center">
-      <Text className="text-lg font-bold">Grupo Radar Radio</Text>
-    </View>
+    <GestureHandlerRootView>
+      <CarouselPoster />
+      <NewsSection />
+    </GestureHandlerRootView>
   );
 }
 
