@@ -1,27 +1,10 @@
-import TrackPlayer, {Event, RepeatMode} from 'react-native-track-player';
+import TrackPlayer, {Event} from 'react-native-track-player';
 
 import {playListData} from '../assets/data/radioStreams';
-
-//Setup Track Player Code
-export async function setupPlayer() {
-  let isSetup = false;
-  try {
-    await TrackPlayer.getActiveTrackIndex();
-    isSetup = true;
-  } catch (error) {
-    await TrackPlayer.setupPlayer({
-      autoHandleInterruptions: true,
-    });
-    isSetup = true;
-  } finally {
-    return isSetup;
-  }
-}
 
 //Add Track Data to Queue and set repeat mode to Queue
 export async function addTrack() {
   await TrackPlayer.add(playListData);
-  await TrackPlayer.setRepeatMode(RepeatMode.Queue);
 }
 
 //Add listen events for button presses

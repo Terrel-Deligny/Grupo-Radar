@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 const ControlCenter = () => {
   //const playBackState = TrackPlayer.;
   const playbackState = usePlaybackState().state;
-  playbackState === State.Ready;
+  playbackState === State.None;
   //Next Button
   const skipToNext = async () => {
     await TrackPlayer.skipToNext();
