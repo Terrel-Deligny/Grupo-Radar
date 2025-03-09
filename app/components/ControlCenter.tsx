@@ -22,10 +22,8 @@ const ControlCenter = () => {
     if (currentTrack !== null) {
       if (playback === State.Paused || playback === State.Ready) {
         await TrackPlayer.play();
-        console.log('The player is playing');
       } else {
         await TrackPlayer.pause();
-        console.log('The player is paused');
       }
     }
   };
