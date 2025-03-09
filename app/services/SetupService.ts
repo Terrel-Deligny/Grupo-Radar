@@ -5,6 +5,18 @@ import TrackPlayer, {
 } from 'react-native-track-player';
 
 export const DefaultRepeatMode = RepeatMode.Queue;
+
+/*
+        This is the default behavior when stopping the app in the recents menu for android.
+        * ContinuePlayback (default)
+           This option will continue playing audio in the background when the app is removed from recents. The notification remains. This is the default.
+
+         PausePlayback
+           This option will pause playing audio in the background when the app is removed from recents. The notification remains and can be used to resume playback.
+
+         StopPlaybackAndRemoveNotification
+           This option will stop playing audio in the background when the app is removed from recents. The notification is removed and can't be used to resume playback. Users would need to open the app again to start playing audio.
+        */
 export const DefaultAudioServiceBehaviour =
   AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification;
 
@@ -32,19 +44,7 @@ export const SetupService = async () => {
   });
   await TrackPlayer.updateOptions({
     android: {
-      /*
-        This is the default behavior when stopping the app in the recents menu for android.
-        * ContinuePlayback (default)
-           This option will continue playing audio in the background when the app is removed from recents. The notification remains. This is the default.
-
-         PausePlayback
-           This option will pause playing audio in the background when the app is removed from recents. The notification remains and can be used to resume playback.
-
-         StopPlaybackAndRemoveNotification
-           This option will stop playing audio in the background when the app is removed from recents. The notification is removed and can't be used to resume playback. Users would need to open the app again to start playing audio.
-        */
-      appKilledPlaybackBehavior:
-        AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification,
+      appKilledPlaybackBehavior: DefaultAudioServiceBehaviour,
     },
     capabilities: [
       Capability.Play,
@@ -56,7 +56,9 @@ export const SetupService = async () => {
       Capability.Play,
       Capability.Pause,
       Capability.SkipToNext,
+      Capability.SkipToPrevious,
     ],
+
     progressUpdateEventInterval: 2,
   });
   await TrackPlayer.setRepeatMode(DefaultRepeatMode);
