@@ -19,6 +19,25 @@ export default function App() {
 const Inner: React.FC = () => {
   const isPlayerReady = useSetupPlayer();
 
+  /*
+  //Incase we use default app behavior on killed, where the app can be launched from the notification.
+  useEffect(() => {
+    function deepLinkHandler(data: {url: string}) {
+      console.log('deepLinkHandler', data.url);
+    }
+
+    // This event will be fired when the app is already open and the notification is clicked
+    const subscription = Linking.addEventListener('url', deepLinkHandler);
+
+    // When you launch the closed app from the notification or any other link
+    Linking.getInitialURL().then(url => console.log('getInitialURL', url));
+
+    return () => {
+      subscription.remove();
+    };
+  }, []);
+  */
+
   if (!isPlayerReady) {
     return (
       <SafeAreaView style={styles.screenContainer}>
