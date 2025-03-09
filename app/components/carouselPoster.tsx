@@ -35,6 +35,9 @@ const CarouselPoster = () => {
 
   return (
     <View style={styles.container}>
+      <View>
+        <Text style={styles.headingText}>Promotions</Text>
+      </View>
       <Carousel
         ref={carouselRef}
         width={width}
@@ -69,17 +72,23 @@ const CarouselPoster = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: 400,
+    height: 300,
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: 50,
   },
+  headingText: {
+    fontSize: 34,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    padding: 6,
+  },
   slide: {
     width: '100%',
-    height: 350,
+    height: 330,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 100,
+    borderRadius: 60,
   },
   title: {
     fontSize: 24,
@@ -96,7 +105,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: -60,
+    marginTop: -80,
   },
   paginationDot: {
     width: 8,
