@@ -11,7 +11,7 @@ export const playListData: Track[] = [
     artwork: Image.resolveAssetSource(
       require('../images/radar107.5-albumart.png'),
     ).uri,
-    url: 'https://radios.radiohd.com.mx/8268/stream.',
+    url: 'https://radios.radiohd.com.mx/8268/stream',
     isLiveStream: true,
   },
   {
