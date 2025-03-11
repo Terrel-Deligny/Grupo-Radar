@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {ActivityIndicator, SafeAreaView, StyleSheet, View} from 'react-native';
 
-import {addTrack} from './services/audioPlayerServices';
+import {addTrack} from './services/AudioPlayerServices';
 import {SetupService} from './services/SetupService';
 import MusicPlayer from './screens/MusicPlayer';
 import '../global.css';
