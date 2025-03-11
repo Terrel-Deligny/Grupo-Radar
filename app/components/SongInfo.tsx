@@ -1,5 +1,5 @@
 import React, {PropsWithChildren} from 'react';
-import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
+import {Dimensions, Image, StyleSheet, View} from 'react-native';
 import {Track} from 'react-native-track-player';
 
 const {width} = Dimensions.get('window');
@@ -18,12 +18,6 @@ const SongInfo = ({track}: SongInfoProps) => {
           </View>
         </View>
       </View>
-      <View style={styles.containerControls}>
-        <View>
-          <Text style={styles.name}>{track?.title}</Text>
-          <Text style={styles.artist}>{track?.artist}</Text>
-        </View>
-      </View>
     </View>
   );
 };
@@ -31,7 +25,7 @@ const SongInfo = ({track}: SongInfoProps) => {
 const styles = StyleSheet.create({
   containerControls: {
     width: '100%',
-    marginTop: 18,
+    marginTop: 15,
 
     flexDirection: 'row',
     alignItems: 'baseline',
@@ -42,25 +36,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#001d23',
   },
-  name: {
-    marginBottom: 8,
-    textAlign: 'center',
-
-    color: '#fff',
-    fontSize: 24,
-    fontWeight: '800',
-  },
-  artist: {
-    color: '#d9d9d9',
-    textAlign: 'center',
-  },
   albumArtImg: {
     height: '100%',
     borderRadius: 4,
   },
   albumContainer: {
-    width: 300,
-    height: 300,
+    width: 150,
+    height: 150,
   },
   listArtWrapper: {
     width: width,
