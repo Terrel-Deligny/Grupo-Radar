@@ -7,10 +7,14 @@ import MusicPlayer from './screens/MusicPlayer';
 import '../global.css';
 import TrackPlayer from 'react-native-track-player';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import CarouselPoster from './components/carouselPoster';
+import NewsSection from './components/newsSection';
 
 export default function App() {
   return (
     <GestureHandlerRootView className="flex-1">
+      <CarouselPoster />
+      <NewsSection />
       <Inner />
     </GestureHandlerRootView>
   );
