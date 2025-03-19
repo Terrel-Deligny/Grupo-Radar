@@ -9,13 +9,16 @@ import TrackPlayer from 'react-native-track-player';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import CarouselPoster from './components/CarouselPoster';
 import CarouselNews from './components/CarouselNews';
+import {WixProvider} from '@wix/sdk-react';
 
 export default function App() {
   return (
     <GestureHandlerRootView className="flex-1">
-      <CarouselPoster />
-      <CarouselNews />
-      <Inner />
+      <WixProvider>
+        <CarouselPoster />
+        <CarouselNews />
+        <Inner />
+      </WixProvider>
     </GestureHandlerRootView>
   );
 }

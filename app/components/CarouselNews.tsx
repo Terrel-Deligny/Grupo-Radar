@@ -11,7 +11,7 @@ import Carousel from 'react-native-reanimated-carousel';
 import {createClient, OAuthStrategy} from '@wix/sdk';
 import {items} from '@wix/data';
 
-const clientId = 'Wix API Key Placeholder'; // Replace with your Client ID
+const clientId = 'Wix Placeholder'; // Replace with your Client ID
 const {width: screenWidth} = Dimensions.get('window');
 
 const wixClient = createClient({
