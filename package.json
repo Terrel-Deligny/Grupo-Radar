@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@babel/plugin-transform-export-namespace-from": "^7.25.9",
     "@react-native-vector-icons/fontawesome6": "^6.7.1",
     "@wix/data": "^1.0.211",
     "@wix/sdk": "^1.15.14",
