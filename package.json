@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@babel/plugin-transform-export-namespace-from": "^7.25.9",
     "@react-native-vector-icons/fontawesome6": "^6.7.1",
     "@gluestack-style/react": "^1.0.57",
     "@gluestack-ui/config": "^1.1.20",
