@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@react-native-vector-icons/fontawesome6": "^6.7.1",
+    "@wix/data": "^1.0.211",
+    "@wix/sdk": "^1.15.14",
+    "@wix/sdk-react": "^0.5.9",
     "nativewind": "^4.1.23",
     "react": "18.3.1",
     "react-native": "0.77.1",
