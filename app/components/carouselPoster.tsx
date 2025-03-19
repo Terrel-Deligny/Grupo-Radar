@@ -72,10 +72,10 @@ const CarouselPoster = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: 300,
+    //height: 0,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 50,
+    paddingTop: 100,
   },
   headingText: {
     fontSize: 34,
@@ -84,11 +84,11 @@ const styles = StyleSheet.create({
     padding: 6,
   },
   slide: {
-    width: '100%',
-    height: 330,
+    width: '95%',
+    height: 250,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 60,
+    borderRadius: 30,
   },
   title: {
     fontSize: 24,
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: -80,
+    //marginTop: 10,
   },
   paginationDot: {
     width: 8,

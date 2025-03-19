@@ -76,8 +76,9 @@ export default function NewsSection() {
 
 const styles = StyleSheet.create({
   rootContainer: {
-    flex: 1,
+    //flex: 1, //removed to create better layout space
     justifyContent: 'flex-start',
+    paddingTop: 50,
   },
   NewsHeader: {
     fontSize: 34,
