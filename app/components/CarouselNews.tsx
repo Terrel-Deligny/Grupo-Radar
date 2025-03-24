@@ -11,7 +11,7 @@ import Carousel from 'react-native-reanimated-carousel';
 import {createClient, OAuthStrategy} from '@wix/sdk';
 import {items} from '@wix/data';
 
-const clientId = 'Wix Placeholder'; // Replace with your Client ID
+const clientId = 'WIx Placeholder'; // Replace with your Client ID
 const {width: screenWidth} = Dimensions.get('window');
 
 const wixClient = createClient({
@@ -81,6 +81,7 @@ const CarouselNews = () => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.headingText}>News</Text>{' '}
       <Carousel
         loop={false}
         width={screenWidth * 0.8}
@@ -104,6 +105,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 20,
+  },
+  headingText: {
+    fontSize: 34,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    paddingTop: 30,
   },
   item: {
     backgroundColor: '#f9f9f9',

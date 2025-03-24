@@ -40,7 +40,7 @@ const ControlCenter = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    paddingTop: 1,
   },
   controls: {
     marginBottom: 56,

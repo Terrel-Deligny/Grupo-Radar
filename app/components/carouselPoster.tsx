@@ -6,6 +6,7 @@ import {
   Dimensions,
   Linking,
   TouchableOpacity,
+  Text,
 } from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 import {createClient, OAuthStrategy} from '@wix/sdk';
@@ -28,6 +29,7 @@ interface Poster {
 
 const CarouselPoster = () => {
   const [posters, setPosters] = useState<Poster[]>([]);
+  const [activeIndex, setActiveIndex] = useState(0); // Track active carousel index
 
   useEffect(() => {
     const getPoster = async () => {
@@ -76,13 +78,31 @@ const CarouselPoster = () => {
       </TouchableOpacity>
     );
   };
+  // Render pagination dots
+  const renderPagination = () => {
+    return (
+      <View style={styles.paginationContainer}>
+        {posters.map((_, index) => (
+          <View
+            key={index}
+            style={[
+              styles.paginationDot,
+              index === activeIndex ? styles.activeDot : styles.inactiveDot,
+            ]}
+          />
+        ))}
+      </View>
+    );
+  };
 
   return (
     <View style={styles.container}>
+      <Text style={styles.headingText}>Promotions</Text>{' '}
+      {/* Add Promotions text */}
       <Carousel
         loop={false}
-        width={screenWidth * 0.8}
-        height={200}
+        width={screenWidth * 0.9}
+        height={250}
         data={posters}
         scrollAnimationDuration={1000}
         renderItem={renderItem}
@@ -91,7 +111,9 @@ const CarouselPoster = () => {
           parallaxScrollingScale: 0.9,
           parallaxScrollingOffset: 50,
         }}
+        onSnapToItem={index => setActiveIndex(index)} // Update active index
       />
+      {renderPagination()} {/* Render pagination dots */}
     </View>
   );
 };
@@ -99,9 +121,16 @@ const CarouselPoster = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    //height: 0,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 20,
+    paddingTop: 100,
+  },
+  headingText: {
+    fontSize: 34,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    padding: 10,
   },
   title: {
     fontSize: 18,
@@ -117,6 +146,25 @@ const styles = StyleSheet.create({
   posterImage: {
     width: '100%',
     height: '100%',
+  },
+  paginationContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
+    paddingBottom: 20,
+  },
+  paginationDot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    marginHorizontal: 4,
+  },
+  activeDot: {
+    backgroundColor: '#000', // Color for the active dot
+  },
+  inactiveDot: {
+    backgroundColor: '#ccc', // Color for inactive dots
   },
 });
 
