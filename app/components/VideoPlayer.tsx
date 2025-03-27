@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import VideoPlayer from 'react-native-video-player';
 import {tvStream} from '../assets/data/tvStreams';
+import {WebView} from 'react-native-webview';
 
-const VideoPlayerComponent = () => {
+const VideoPlayer = () => {
   const [selectedStation, setSelectedStation] = React.useState(tvStream[0]);
 
   return (
@@ -24,12 +24,13 @@ const VideoPlayerComponent = () => {
         <Text style={styles.videoTitle}>
           Now Playing: {selectedStation.name}
         </Text>
-        <VideoPlayer
+        <WebView
           source={{uri: selectedStation.videoUrl}}
-          videoWidth={300}
-          videoHeight={200}
-          autoplay={true}
-          defaultMuted={false}
+          style={styles.container}
+          mediaPlaybackRequiresUserAction={true}
+          //startInLoadingState={true}
+          //renderLoading={() => <ActivityIndicator />}
+          //allowsFullscreenVideo={true}
         />
       </View>
     </View>
@@ -47,6 +48,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
+    marginTop: 50,
   },
   stationList: {
     marginBottom: 20,
@@ -63,7 +65,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   videoContainer: {
-    alignItems: 'center',
+    //alignItems: 'center',
+    height: 250,
+    width: '100%',
   },
   videoTitle: {
     fontSize: 18,
@@ -72,4 +76,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default VideoPlayerComponent;
+export default VideoPlayer;

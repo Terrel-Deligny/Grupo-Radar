@@ -41,9 +41,8 @@
     "react-native-svg": "^15.11.2",
     "react-native-track-player": "^4.1.1",
     "react-native-vector-icons": "^10.2.0",
+    "react-native-webview": "^13.13.5",
     "simple-icons": "^14.9.0",
-    "react-native-video": "^6.11.0",
-    "react-native-video-player": "^0.16.2",
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
