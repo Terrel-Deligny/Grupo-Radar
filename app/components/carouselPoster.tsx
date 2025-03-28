@@ -1,70 +1,119 @@
-import React, {useRef, useState} from 'react';
-import {View, Text, StyleSheet, Dimensions} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  View,
+  Image,
+  StyleSheet,
+  Dimensions,
+  Linking,
+  TouchableOpacity,
+  Text,
+} from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
+import {createClient, OAuthStrategy} from '@wix/sdk';
+import {items} from '@wix/data';
 
-const {width} = Dimensions.get('window');
+const clientId = 'Wix Placeholder'; // Replace with your Client ID
+const {width: screenWidth} = Dimensions.get('window');
 
-// Define the type for the carousel data
-type CarouselItem = {
+const wixClient = createClient({
+  auth: OAuthStrategy({clientId}),
+  modules: {items},
+});
+
+interface Poster {
+  _id: string;
   title: string;
-  color: string;
-};
-
-const data: CarouselItem[] = [
-  {title: 'Slide 1', color: '#FF5733'},
-  {title: 'Slide 2', color: '#33FF57'},
-  {title: 'Slide 3', color: '#3357FF'},
-  {title: 'Slide 4', color: '#FF33A1'},
-];
+  image: string;
+  webpage: string;
+}
 
 const CarouselPoster = () => {
-  const carouselRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(0); // Track the active slide index
+  const [posters, setPosters] = useState<Poster[]>([]);
+  const [activeIndex, setActiveIndex] = useState(0); // Track active carousel index
 
-  // Explicitly define the type of `item` in the renderItem function
-  const renderItem = ({item}: {item: CarouselItem}) => (
-    <View style={[styles.slide, {backgroundColor: item.color}]}>
-      <Text style={styles.title}>{item.title}</Text>
-    </View>
-  );
+  useEffect(() => {
+    const getPoster = async () => {
+      const data = await fetchPoster();
+      setPosters(data);
+    };
+    getPoster();
+  }, []);
 
-  // Handle scroll event to update the active index
-  const onScroll = (index: number) => {
-    setActiveIndex(index);
+  const fetchPoster = async (): Promise<Poster[]> => {
+    try {
+      const response = await wixClient.items
+        .query('Promociones')
+        .limit(5) // Limit Number of Articles Fetched
+        .descending('_createdDate')
+        .find();
+      //Output Fetched API Data in Terminal
+      console.log('API Response Posters', response.items);
+
+      return response.items as Poster[];
+    } catch (error) {
+      console.error('Error fetching Posters:', error);
+      return [];
+    }
+  };
+
+  const handleArticlePress = (webpage: string) => {
+    Linking.openURL(webpage); //open article page
+  };
+
+  const renderItem = ({item}: {item: Poster}) => {
+    //Construct Image url becuase the fetched url does not contain the domain
+    const posterUrl =
+      'https://static.wixstatic.com/media/' + item.image.split('/')[3];
+
+    return (
+      <TouchableOpacity
+        onPress={() => handleArticlePress(item.webpage)}
+        activeOpacity={0.8}
+        style={styles.posterContainer}>
+        <Image
+          style={styles.posterImage}
+          source={{uri: posterUrl}}
+          resizeMode="cover"
+        />
+      </TouchableOpacity>
+    );
+  };
+  // Render pagination dots
+  const renderPagination = () => {
+    return (
+      <View style={styles.paginationContainer}>
+        {posters.map((_, index) => (
+          <View
+            key={index}
+            style={[
+              styles.paginationDot,
+              index === activeIndex ? styles.activeDot : styles.inactiveDot,
+            ]}
+          />
+        ))}
+      </View>
+    );
   };
 
   return (
     <View style={styles.container}>
-      <View>
-        <Text style={styles.headingText}>Promotions</Text>
-      </View>
+      <Text style={styles.headingText}>Promotions</Text>{' '}
+      {/* Add Promotions text */}
       <Carousel
-        ref={carouselRef}
-        width={width}
-        data={data}
-        renderItem={renderItem}
-        autoPlay={false} // Auto-scroll turned off
+        loop={false}
+        width={screenWidth * 0.9}
+        height={250}
+        data={posters}
         scrollAnimationDuration={1000}
+        renderItem={renderItem}
         mode="parallax"
         modeConfig={{
           parallaxScrollingScale: 0.9,
           parallaxScrollingOffset: 50,
         }}
-        onSnapToItem={onScroll} // Update the active index on scroll
+        onSnapToItem={index => setActiveIndex(index)} // Update active index
       />
-      {/* Pagination Dots */}
-      <View style={styles.pagination}>
-        {data.map((_, index) => (
-          <View
-            key={index}
-            style={[
-              styles.paginationDot,
-              activeIndex === index && styles.paginationDotActive,
-            ]}
-          />
-        ))}
-      </View>
-      {/* Navigation Buttons */}
+      {renderPagination()} {/* Render pagination dots */}
     </View>
   );
 };
@@ -72,50 +121,50 @@ const CarouselPoster = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: 300,
+    //height: 0,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 50,
+    paddingTop: 100,
   },
   headingText: {
     fontSize: 34,
     fontWeight: 'bold',
     textAlign: 'center',
-    padding: 6,
-  },
-  slide: {
-    width: '100%',
-    height: 330,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 60,
+    padding: 10,
   },
   title: {
-    fontSize: 24,
-    color: '#FFFFFF',
+    fontSize: 18,
     fontWeight: 'bold',
+    marginBottom: 8,
   },
-  controls: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+  posterContainer: {
     width: '100%',
-    marginTop: 10,
+    height: '100%',
+    borderRadius: 10,
+    overflow: 'hidden',
   },
-  pagination: {
+  posterImage: {
+    width: '100%',
+    height: '100%',
+  },
+  paginationContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: -80,
+    marginTop: 10,
+    paddingBottom: 20,
   },
   paginationDot: {
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: '#ccc',
-    marginHorizontal: 5,
+    marginHorizontal: 4,
   },
-  paginationDotActive: {
-    backgroundColor: '#333', // Active dot color
+  activeDot: {
+    backgroundColor: '#000', // Color for the active dot
+  },
+  inactiveDot: {
+    backgroundColor: '#ccc', // Color for inactive dots
   },
 });
 
