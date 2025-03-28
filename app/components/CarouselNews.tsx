@@ -10,8 +10,9 @@ import {
 import Carousel from 'react-native-reanimated-carousel';
 import {createClient, OAuthStrategy} from '@wix/sdk';
 import {items} from '@wix/data';
+import {WIX_CLIENTID} from '@env';
 
-const clientId = 'Wix Placeholder'; // Replace with your Client ID
+const clientId = WIX_CLIENTID;
 const {width: screenWidth} = Dimensions.get('window');
 
 const wixClient = createClient({
