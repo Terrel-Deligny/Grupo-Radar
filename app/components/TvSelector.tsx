@@ -1,40 +1,50 @@
-import React from 'react'
-import { Box, Image, Text, Link } from '@gluestack-ui/themed'
+import React from 'react';
+import {tvStream} from '../assets/data/tvStreams';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 export default function TV() {
-    const streams = [
-        {
-            name: "Radar 107.5",
-            url:  'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-            imgUri: "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-        },
-        {
-            name: "Asisucede Celaya",
-            url:  'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-            imgUri: "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-        }
-    ]
+  const handleClick = (vidURL: string) => {
+    console.log(vidURL);
+  };
 
-    const handleClick = (vidURL: string) => {
-        console.log(vidURL);
-    }
-    
-    return (
-        <Box>
-            {streams.map((stream) => 
-                <Link my="$8" key={ stream.name } onPress={() => handleClick(stream.url)}>
-                    <Box bgColor='white' flexDirection="row" alignItems='center' justifyContent='center'>
-                        <Box alignItems='center' justifyContent='center' flex={1}>
-                        <Image
-                            size="xl"
-                            source={{ uri: stream.imgUri }}
-                            alt="image"
-                        />
-                        </Box>
-                        <Text flex={1}>{ stream.name }</Text>
-                    </Box>
-                </Link>
-            )}
-        </Box>
-    )
+  return (
+    <View style={styles.container}>
+      {tvStream.map(stream => (
+        <TouchableOpacity
+          style={[styles.button]}
+          key={stream.id}
+          onPress={() => handleClick(stream.videoUrl)}>
+          <Image
+            source={{uri: stream.image}}
+            style={styles.image}
+            resizeMode="contain"
+          />
+          <Text style={styles.text}>{stream.name}</Text>
+        </TouchableOpacity>
+      ))}
+    </View>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+
+  button: {
+    marginTop: '8%',
+    marginBottom: '8%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+
+  image: {
+    width: '50%',
+    height: '300%',
+  },
+  text: {
+    color: '#F0F8FF',
+    fontSize: 20,
+  },
+});
