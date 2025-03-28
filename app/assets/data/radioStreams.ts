@@ -11,6 +11,7 @@ export const playListData: Track[] = [
     artwork: Image.resolveAssetSource(
       require('../album-art/radar107.5-albumart.png'),
     ).uri,
+    image: Image.resolveAssetSource(require('../buttons-art/cristal.png')).uri,
     url: 'https://radios.radiohd.com.mx/8274/stream',
     isLiveStream: true,
   },
@@ -21,6 +22,7 @@ export const playListData: Track[] = [
     artwork: Image.resolveAssetSource(
       require('../album-art/cristal101.1-albumart.png'),
     ).uri,
+    image: Image.resolveAssetSource(require('../buttons-art/elyella.png')).uri,
     url: 'https://radios.radiohd.com.mx/8272/stream',
     isLiveStream: true,
   },
@@ -31,6 +33,7 @@ export const playListData: Track[] = [
     artwork: Image.resolveAssetSource(
       require('../album-art/lobobajio88.1-920am-albumart.png'),
     ).uri,
+    image: Image.resolveAssetSource(require('../buttons-art/radar.png')).uri,
     url: 'https://radios.radiohd.com.mx/8268/stream',
     isLiveStream: true,
   },
@@ -41,6 +44,8 @@ export const playListData: Track[] = [
     artwork: Image.resolveAssetSource(
       require('../album-art/radar88.9-albumart.png'),
     ).uri,
+    image: Image.resolveAssetSource(require('../buttons-art/cristal967.png'))
+      .uri,
     url: 'https://radios.radiohd.com.mx/8264/stream',
     isLiveStream: true,
   },
@@ -51,6 +56,7 @@ export const playListData: Track[] = [
     artwork: Image.resolveAssetSource(
       require('../album-art/elyella103.7-albumart.png'),
     ).uri,
+    image: Image.resolveAssetSource(require('../buttons-art/lobo.png')).uri,
     url: 'https://radios.radiohd.com.mx/8188/stream',
     isLiveStream: true,
   },
@@ -61,6 +67,7 @@ export const playListData: Track[] = [
     artwork: Image.resolveAssetSource(
       require('../album-art/cristal96.7-albumart.png'),
     ).uri,
+    image: Image.resolveAssetSource(require('../buttons-art/bajio.png')).uri,
     url: 'https://radios.radiohd.com.mx/8270/stream',
     isLiveStream: true,
   },
@@ -71,6 +78,7 @@ export const playListData: Track[] = [
     artwork: Image.resolveAssetSource(
       require('../album-art/lobo88.3-albumart.png'),
     ).uri,
+    image: Image.resolveAssetSource(require('../buttons-art/radar889.png')).uri,
     url: 'https://radios.radiohd.com.mx/8382/stream',
     isLiveStream: true,
   },
