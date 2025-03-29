@@ -1,7 +1,8 @@
 import React from 'react';
-import {Box, Text} from '@gluestack-ui/themed';
+import {Box} from '@gluestack-ui/themed';
 import {FacebookIcon, TiktokIcon, WhatsappIcon, InstagramIcon} from './Icons';
 import {Dimensions, TouchableOpacity} from 'react-native';
+import CurrentlyPlaying from './CurrentlyPlaying';
 
 export default function SocialMedia() {
   const {width} = Dimensions.get('window');
@@ -10,7 +11,7 @@ export default function SocialMedia() {
 
   return (
     <Box backgroundColor="#161C00">
-      <Text>Currently Playing:</Text>
+      <CurrentlyPlaying />
       <Box
         marginTop={8}
         marginBottom={8}

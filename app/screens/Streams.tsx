@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, ScrollView} from 'react-native';
+import {View, ScrollView, StyleSheet} from 'react-native';
 import Radio from '../components/RadioSelector';
 import TV from '../components/TvSelector';
 import SocialMedia from '../components/SocialMedia';
@@ -17,10 +17,16 @@ export default function Streams() {
   };
 
   return (
-    <View style={{flex: 1, backgroundColor: '#2F3228'}}>
+    <View style={styles.container}>
       <NavigationBar handleClick={handleClick} />
       <ScrollView>{media}</ScrollView>
       <SocialMedia />
     </View>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#2F3228',
+  },
+});
