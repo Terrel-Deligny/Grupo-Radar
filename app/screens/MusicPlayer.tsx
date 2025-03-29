@@ -1,17 +1,17 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, View} from 'react-native';
 
 import TrackPlayer, {
   Event,
-  Track,
   useTrackPlayerEvents,
 } from 'react-native-track-player';
+import {useTrackStore} from '../assets/store/store'; // Adjust the import path
 
 import SongInfo from '../components/SongInfo';
 import ControlCenter from '../components/ControlCenter';
 
 const MusicPlayer = () => {
-  const [track, setTrack] = useState<Track | null>();
+  const setTrack = useTrackStore(state => state.setTrack);
 
   useTrackPlayerEvents([Event.PlaybackActiveTrackChanged], async event => {
     switch (event.type) {
@@ -24,7 +24,7 @@ const MusicPlayer = () => {
 
   return (
     <View style={styles.container}>
-      <SongInfo track={track} />
+      <SongInfo />
       <ControlCenter />
     </View>
   );

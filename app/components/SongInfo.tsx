@@ -1,14 +1,15 @@
 import React, {PropsWithChildren} from 'react';
 import {Dimensions, Image, StyleSheet, View} from 'react-native';
 import {Track} from 'react-native-track-player';
-
+import {useTrackStore} from '../assets/store/store'; // Adjust the import path
 const {width} = Dimensions.get('window');
-
+/*
 type SongInfoProps = PropsWithChildren<{
   track: Track | null | undefined;
 }>;
-
-const SongInfo = ({track}: SongInfoProps) => {
+*/
+const SongInfo = () => {
+  const track = useTrackStore(state => state.track);
   return (
     <View>
       <View style={styles.containerArtwork}>
