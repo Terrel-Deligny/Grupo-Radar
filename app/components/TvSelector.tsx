@@ -1,10 +1,21 @@
 import React from 'react';
 import {tvStream} from '../assets/data/tvStreams';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import VideoPlayer from './VideoPlayer';
 
 export default function TV() {
-  const handleClick = (vidURL: string) => {
-    console.log(vidURL);
+  const [selectedStation, setSelectedStation] = React.useState(tvStream[0]);
+
+  const handleClick = (
+    stream: React.SetStateAction<{
+      id: number;
+      name: string;
+      image: string;
+      videoUrl: string;
+    }>,
+  ) => {
+    setSelectedStation(stream);
+    console.log(stream);
   };
 
   return (
@@ -13,7 +24,7 @@ export default function TV() {
         <TouchableOpacity
           style={[styles.button]}
           key={stream.id}
-          onPress={() => handleClick(stream.videoUrl)}>
+          onPress={() => handleClick(stream)}>
           <Image
             source={{uri: stream.image}}
             style={styles.image}
@@ -22,6 +33,7 @@ export default function TV() {
           <Text style={styles.text}>{stream.name}</Text>
         </TouchableOpacity>
       ))}
+      <VideoPlayer selectedStation={selectedStation} />
     </View>
   );
 }

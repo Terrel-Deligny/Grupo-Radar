@@ -1,14 +1,25 @@
-import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import {tvStream} from '../assets/data/tvStreams';
+import React, {PropsWithChildren} from 'react';
+import {View, StyleSheet, Text} from 'react-native';
 import {WebView} from 'react-native-webview';
 
-const VideoPlayer = () => {
-  const [selectedStation, setSelectedStation] = React.useState(tvStream[0]);
+interface selectedStation {
+  id: number;
+  name: string;
+  image: string;
+  videoUrl: string;
+}
 
+type selectedStationProps = PropsWithChildren<{
+  selectedStation: selectedStation;
+}>;
+
+const VideoPlayer = ({selectedStation}: selectedStationProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.videoContainer}>
+        <Text style={styles.videoTitle}>
+          Now Playing: {selectedStation.name}
+        </Text>
         <WebView
           source={{uri: selectedStation.videoUrl}}
           style={styles.container}
@@ -50,7 +61,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   videoContainer: {
-    height: 250,
+    height: 220,
     width: '100%',
   },
   videoTitle: {
@@ -61,23 +72,3 @@ const styles = StyleSheet.create({
 });
 
 export default VideoPlayer;
-
-/*
-
-
-<Text style={styles.title}>Select a Station</Text>
-      <View style={styles.stationList}>
-        {tvStream.map(station => (
-          <TouchableOpacity
-            key={station.id}
-            style={styles.stationButton}
-            onPress={() => setSelectedStation(station)}>
-            <Text style={styles.stationText}>{station.name}</Text>
-          </TouchableOpacity>
-        ))}
-      </View>
-
-      <Text style={styles.videoTitle}>
-          Now Playing: {selectedStation.name}
-        </Text>
-      */
