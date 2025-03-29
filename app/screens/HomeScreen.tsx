@@ -27,7 +27,7 @@ export default function HomeScreen() {
       <CarouselNews />
       <View style={styles.radioButton}>
         <Pressable onPress={() => navigation.navigate('Streams')}>
-          <FontAwesome6Icon size={35} name="radio" />
+          <FontAwesome6Icon size={30} name="radio" />
         </Pressable>
       </View>
 
