@@ -1,20 +1,24 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import {Text, View} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
 import '../global.css';
 
-function App() {
+import Streams from './screens/Streams';
+import HomeScreen from './screens/HomeScreen';
+import {RootStackParamList} from './components/NavigationFile';
+import {createStackNavigator} from '@react-navigation/stack';
+const Stack = createStackNavigator<RootStackParamList>();
+
+export default function App() {
   return (
-    <View className="flex-1 bg-green-300 justify-center items-center">
-      <Text className="text-lg font-bold">Grupo Radar Radio</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen name="Streams" component={Streams} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-export default App;
