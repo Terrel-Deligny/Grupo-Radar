@@ -15,11 +15,11 @@ export default function TV() {
     }>,
   ) => {
     setSelectedStation(stream);
-    console.log(stream);
   };
 
   return (
     <View style={styles.container}>
+      <VideoPlayer selectedStation={selectedStation} />
       {tvStream.map(stream => (
         <TouchableOpacity
           style={[styles.button]}
@@ -33,7 +33,6 @@ export default function TV() {
           <Text style={styles.text}>{stream.name}</Text>
         </TouchableOpacity>
       ))}
-      <VideoPlayer selectedStation={selectedStation} />
     </View>
   );
 }

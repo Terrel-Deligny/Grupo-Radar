@@ -1,5 +1,5 @@
 import React, {PropsWithChildren} from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, ActivityIndicator} from 'react-native';
 import {WebView} from 'react-native-webview';
 
 interface selectedStation {
@@ -14,19 +14,37 @@ type selectedStationProps = PropsWithChildren<{
 }>;
 
 const VideoPlayer = ({selectedStation}: selectedStationProps) => {
+  const [isLoading, setIsLoading] = React.useState(true);
+
   return (
     <View style={styles.container}>
       <View style={styles.videoContainer}>
         <Text style={styles.videoTitle}>
           Now Playing: {selectedStation.name}
         </Text>
+        {isLoading && (
+          <View style={styles.loadingContainer}>
+            <ActivityIndicator size="large" color="#0000ff" />
+          </View>
+        )}
         <WebView
+          key={selectedStation.id} // Force re-render with new key
           source={{uri: selectedStation.videoUrl}}
-          style={styles.container}
-          mediaPlaybackRequiresUserAction={true}
-          //startInLoadingState={true}
-          //renderLoading={() => <ActivityIndicator />}
-          //allowsFullscreenVideo={true}
+          style={[styles.container, isLoading && styles.loading]}
+          allowsAirPlayForMediaPlayback={true}
+          allowsInlineMediaPlayback={true}
+          allowsFullscreenVideo={true}
+          allowsPictureInPictureMediaPlayback={true}
+          mediaPlaybackRequiresUserAction={false}
+          onLoadStart={() => setIsLoading(true)}
+          onLoadEnd={() => setIsLoading(false)}
+          cacheEnabled={true}
+          domStorageEnabled={true}
+          javaScriptEnabled={true}
+          onError={syntheticEvent => {
+            const {nativeEvent} = syntheticEvent;
+            console.warn('WebView error: ', nativeEvent);
+          }}
         />
       </View>
     </View>
@@ -46,6 +64,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 50,
   },
+  loadingContainer: {
+    height: 200,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   stationList: {
     marginBottom: 20,
   },
@@ -61,13 +84,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   videoContainer: {
-    height: 220,
+    height: 250,
     width: '100%',
   },
   videoTitle: {
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
+  },
+  loading: {
+    height: 0,
   },
 });
 
