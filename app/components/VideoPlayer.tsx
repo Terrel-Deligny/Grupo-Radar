@@ -8,22 +8,7 @@ const VideoPlayer = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Select a Station</Text>
-      <View style={styles.stationList}>
-        {tvStream.map(station => (
-          <TouchableOpacity
-            key={station.id}
-            style={styles.stationButton}
-            onPress={() => setSelectedStation(station)}>
-            <Text style={styles.stationText}>{station.name}</Text>
-          </TouchableOpacity>
-        ))}
-      </View>
-
       <View style={styles.videoContainer}>
-        <Text style={styles.videoTitle}>
-          Now Playing: {selectedStation.name}
-        </Text>
         <WebView
           source={{uri: selectedStation.videoUrl}}
           style={styles.container}
@@ -40,7 +25,7 @@ const VideoPlayer = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    //padding: 20,
     backgroundColor: '#f5f5f5',
   },
   title: {
@@ -65,7 +50,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   videoContainer: {
-    //alignItems: 'center',
     height: 250,
     width: '100%',
   },
@@ -77,3 +61,23 @@ const styles = StyleSheet.create({
 });
 
 export default VideoPlayer;
+
+/*
+
+
+<Text style={styles.title}>Select a Station</Text>
+      <View style={styles.stationList}>
+        {tvStream.map(station => (
+          <TouchableOpacity
+            key={station.id}
+            style={styles.stationButton}
+            onPress={() => setSelectedStation(station)}>
+            <Text style={styles.stationText}>{station.name}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+
+      <Text style={styles.videoTitle}>
+          Now Playing: {selectedStation.name}
+        </Text>
+      */
