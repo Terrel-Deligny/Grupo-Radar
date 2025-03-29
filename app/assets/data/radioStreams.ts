@@ -6,7 +6,7 @@ import {Track} from 'react-native-track-player';
 export const playListData: Track[] = [
   {
     id: 5,
-    artist: 'Radio Lobo Bajío 88.1 FM & 920 AM (Celaya)',
+    title: 'Radio Lobo Bajío 88.1 FM & 920 AM (Celaya)',
     artwork: Image.resolveAssetSource(
       require('../album-art/lobobajio88.1-920am-albumart.png'),
     ).uri,
@@ -18,7 +18,7 @@ export const playListData: Track[] = [
   },
   {
     id: 6,
-    artist: 'Radio Lobo 88.3 FM (San José Iturbide)',
+    title: 'Radio Lobo 88.3 FM (San José Iturbide)',
     artwork: Image.resolveAssetSource(
       require('../album-art/lobo88.3-albumart.png'),
     ).uri,
@@ -28,7 +28,7 @@ export const playListData: Track[] = [
   },
   {
     id: 7,
-    artist: 'Radar 88.9 FM (León)',
+    title: 'Radar 88.9 FM (León)',
     artwork: Image.resolveAssetSource(
       require('../album-art/radar88.9-albumart.png'),
     ).uri,
@@ -39,7 +39,7 @@ export const playListData: Track[] = [
   },
   {
     id: 4,
-    artist: 'Stereo Cristal 96.7  (Celaya)',
+    title: 'Stereo Cristal 96.7  (Celaya)',
     artwork: Image.resolveAssetSource(
       require('../album-art/cristal96.7-albumart.png'),
     ).uri,
@@ -50,7 +50,7 @@ export const playListData: Track[] = [
   },
   {
     id: 1,
-    artist: 'Crystal 101.1',
+    title: 'Crystal 101.1',
     artwork: Image.resolveAssetSource(
       require('../album-art/cristal101.1-albumart.png'),
     ).uri,
@@ -61,7 +61,7 @@ export const playListData: Track[] = [
   },
   {
     id: 2,
-    artist: 'El y Ella 103.7 FM (Celaya)',
+    title: 'El y Ella 103.7 FM (Celaya)',
     artwork: Image.resolveAssetSource(
       require('../album-art/elyella103.7-albumart.png'),
     ).uri,
@@ -72,7 +72,7 @@ export const playListData: Track[] = [
   },
   {
     id: 3,
-    artist: 'Radar 107.5',
+    title: 'Radar 107.5',
     artwork: Image.resolveAssetSource(
       require('../album-art/radar107.5-albumart.png'),
     ).uri,

@@ -6,7 +6,7 @@ export default function CurrentlyPlaying() {
   const track = useTrackStore(state => state.track);
   return (
     <View>
-      <Text style={styles.text}>Currently Playing: {track?.artist}</Text>
+      <Text style={styles.text}>Currently Playing: {track?.title}</Text>
     </View>
   );
 }
