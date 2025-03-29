@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
   containerArtwork: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#001d23',
   },
   albumArtImg: {
     height: '100%',

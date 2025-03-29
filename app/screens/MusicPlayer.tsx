@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {ImageBackground, StyleSheet, View} from 'react-native';
 
 import TrackPlayer, {
   Event,
@@ -11,6 +11,7 @@ import SongInfo from '../components/SongInfo';
 import ControlCenter from '../components/ControlCenter';
 
 const MusicPlayer = () => {
+  const track = useTrackStore(state => state.track);
   const setTrack = useTrackStore(state => state.setTrack);
 
   useTrackPlayerEvents([Event.PlaybackActiveTrackChanged], async event => {
@@ -24,8 +25,13 @@ const MusicPlayer = () => {
 
   return (
     <View style={styles.container}>
-      <SongInfo />
-      <ControlCenter />
+      <ImageBackground
+        source={{uri: track?.backgroundArt}}
+        style={styles.container}
+        resizeMode="cover">
+        <SongInfo />
+        <ControlCenter />
+      </ImageBackground>
     </View>
   );
 };
@@ -36,6 +42,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#001d23',
+  },
+  background: {
+    flex: 1,
+    justifyContent: 'center',
   },
 });
 
