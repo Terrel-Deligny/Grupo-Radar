@@ -19,9 +19,6 @@ const VideoPlayer = ({selectedStation}: selectedStationProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.videoContainer}>
-        <Text style={styles.videoTitle}>
-          Now Playing: {selectedStation.name}
-        </Text>
         {isLoading && (
           <View style={styles.loadingContainer}>
             <ActivityIndicator size="large" color="#0000ff" />
@@ -35,7 +32,7 @@ const VideoPlayer = ({selectedStation}: selectedStationProps) => {
           allowsInlineMediaPlayback={true}
           allowsFullscreenVideo={true}
           allowsPictureInPictureMediaPlayback={true}
-          mediaPlaybackRequiresUserAction={false}
+          mediaPlaybackRequiresUserAction={true}
           onLoadStart={() => setIsLoading(true)}
           onLoadEnd={() => setIsLoading(false)}
           cacheEnabled={true}
@@ -84,7 +81,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   videoContainer: {
-    height: 250,
+    height: 220,
     width: '100%',
   },
   videoTitle: {
