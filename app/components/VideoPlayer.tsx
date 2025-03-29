@@ -1,5 +1,5 @@
 import React, {PropsWithChildren} from 'react';
-import {View, StyleSheet, Text, ActivityIndicator} from 'react-native';
+import {View, StyleSheet, ActivityIndicator} from 'react-native';
 import {WebView} from 'react-native-webview';
 
 interface selectedStation {
