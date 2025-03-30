@@ -82,7 +82,7 @@ const CarouselNews = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.headingText}>News</Text>{' '}
+      <Text style={styles.headingText}>News</Text>
       <Carousel
         loop={false}
         width={screenWidth * 0.8}
