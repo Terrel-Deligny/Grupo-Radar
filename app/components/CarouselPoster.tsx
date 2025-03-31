@@ -98,8 +98,7 @@ const CarouselPoster = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.headingText}>Promotions</Text>{' '}
-      {/* Add Promotions text */}
+      <Text style={styles.headingText}>Promotions</Text>
       <Carousel
         loop={false}
         width={screenWidth * 0.9}
@@ -114,7 +113,7 @@ const CarouselPoster = () => {
         }}
         onSnapToItem={index => setActiveIndex(index)} // Update active index
       />
-      {renderPagination()} {/* Render pagination dots */}
+      {renderPagination()}
     </View>
   );
 };

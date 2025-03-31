@@ -4,8 +4,8 @@ import '../global.css';
 
 import Streams from './screens/Streams';
 import HomeScreen from './screens/HomeScreen';
-import {RootStackParamList} from './components/NavigationFile';
 import {createStackNavigator} from '@react-navigation/stack';
+import {RootStackParamList} from './@types/navigationfile';
 const Stack = createStackNavigator<RootStackParamList>();
 
 export default function App() {
