@@ -18,45 +18,43 @@ import {SetupService} from '../services/SetupService';
 import MusicPlayer from './MusicPlayer';
 import FontAwesome6Icon from 'react-native-vector-icons/FontAwesome6';
 import {useTrackStore} from '../assets/store/store'; // Adjust the import path
+import LinearGradient from 'react-native-linear-gradient';
 
 export default function HomeScreen() {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const track = useTrackStore(state => state.track);
-  const [currentBackground, setCurrentBackground] = useState('#86efac'); // Default color
+  const [currentBackground, setCurrentBackground] = useState<string[]>([]); // Default color
 
   // Effect to handle background changes when track changes
   useEffect(() => {
     switch (track?.id) {
       case 1: // Radio Lobo Bajío 88.1 FM & 920 AM (Celaya)
-        setCurrentBackground('#2563eb'); // Blue
-
+        setCurrentBackground(['#9BB961', '#D58523']);
         break;
       case 2: // Radio Lobo 88.3 FM (San José Iturbide)
-        setCurrentBackground('#7c3aed'); // Purple
+        setCurrentBackground(['#EAD947', '#9BB961']);
         break;
       case 3: // Radar 88.9 FM (León)
-        setCurrentBackground('#059669'); // Green
+        setCurrentBackground(['#A7C14D', '#5C7512']);
         break;
       case 4: // Stereo Cristal 96.7 (Celaya)
-        setCurrentBackground('#dc2626'); // Red
+        setCurrentBackground(['#6F2E88', '#C28153']);
         break;
       case 5: // Crystal 101.1
-        setCurrentBackground('#059669'); // Green
+        setCurrentBackground(['#6F2E88', '#C28153']);
         break;
       case 6: // El y Ella 103.7 FM (Celaya)
-        setCurrentBackground('#059669'); // Green
+        setCurrentBackground(['#F9ED48', '#C02A27']);
         break;
       case 7: // Radar 107.5
-        setCurrentBackground('#059669'); // Green
+        setCurrentBackground(['#A7C14D', '#5C7512']);
         break;
-      default:
-        setCurrentBackground('#86efac'); // Original green
     }
   }, [track?.id]); // Only re-run when track.id changes
 
   return (
     <WixProvider>
-      <View style={[styles.container, {backgroundColor: currentBackground}]}>
+      <LinearGradient style={styles.container} colors={currentBackground}>
         <CarouselPoster />
         <CarouselNews />
         <View style={styles.radioButton}>
@@ -64,7 +62,8 @@ export default function HomeScreen() {
             <FontAwesome6Icon size={30} name="radio" />
           </Pressable>
         </View>
-      </View>
+      </LinearGradient>
+
       <Inner />
     </WixProvider>
   );
@@ -113,13 +112,11 @@ const Inner: React.FC = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    //backgroundColor: 'orange',
-    borderBottomColor: 'black',
+    flex: 2,
   },
   screenContainer: {
     flex: 1,
-    backgroundColor: '#86efac',
+    //backgroundColor: '#86efac',
     alignItems: 'center',
     justifyContent: 'center',
   },
