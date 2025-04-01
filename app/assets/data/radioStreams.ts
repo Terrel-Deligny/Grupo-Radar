@@ -26,7 +26,7 @@ export const playListData: Track[] = [
       require('../album-art/lobo88.3-albumart.png'),
     ).uri,
     backgroundArt: Image.resolveAssetSource(
-      require('../background-art/radar-default.png'),
+      require('../background-art/lobo.png'),
     ).uri,
     image: Image.resolveAssetSource(require('../buttons-art/lobo88.3.png')).uri,
     url: 'https://radios.radiohd.com.mx/8270/stream',
