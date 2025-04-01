@@ -47,14 +47,14 @@ export const SetupService = async () => {
       appKilledPlaybackBehavior: DefaultAudioServiceBehaviour,
     },
     capabilities: [
-      Capability.Play,
-      Capability.Pause,
+      //Capability.Play,
+      //Capability.Pause,
       Capability.SkipToNext,
       Capability.SkipToPrevious,
     ],
     compactCapabilities: [
-      Capability.Play,
-      Capability.Pause,
+      //Capability.Play,
+      //Capability.Pause,
       Capability.SkipToNext,
       Capability.SkipToPrevious,
     ],
