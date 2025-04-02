@@ -16,14 +16,17 @@ import TrackPlayer from 'react-native-track-player';
 import {addTrack} from '../services/AudioPlayerServices';
 import {SetupService} from '../services/SetupService';
 import MusicPlayer from './MusicPlayer';
-import FontAwesome6Icon from 'react-native-vector-icons/FontAwesome6';
 import {useTrackStore} from '../assets/store/store'; // Adjust the import path
 import LinearGradient from 'react-native-linear-gradient';
+import {Image} from 'react-native';
 
 export default function HomeScreen() {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const track = useTrackStore(state => state.track);
-  const [currentBackground, setCurrentBackground] = useState<string[]>([]); // Default color
+  const [currentBackground, setCurrentBackground] = useState<string[]>([
+    '#091679',
+    '#00d4ff',
+  ]); // Default color
 
   // Effect to handle background changes when track changes
   useEffect(() => {
@@ -59,7 +62,7 @@ export default function HomeScreen() {
         <CarouselNews />
         <View style={styles.radioButton}>
           <Pressable onPress={() => navigation.navigate('Streams')}>
-            <FontAwesome6Icon size={30} name="radio" />
+            <Image source={require('../assets/buttons-art/radio-button.png')} />
           </Pressable>
         </View>
       </LinearGradient>
@@ -110,22 +113,6 @@ const Inner: React.FC = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 2,
-  },
-  screenContainer: {
-    flex: 1,
-    //backgroundColor: '#86efac',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  radioButton: {
-    flex: -1,
-    alignItems: 'center',
-  },
-});
-
 function useSetupPlayer() {
   const [playerReady, setPlayerReady] = useState<boolean>(false);
 
@@ -151,3 +138,26 @@ function useSetupPlayer() {
   }, []);
   return playerReady;
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 2,
+    justifyContent: 'space-between',
+    position: 'relative',
+  },
+  screenContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 1,
+  },
+  radioButton: {
+    //flex: -1,
+    alignItems: 'center',
+    marginBottom: -10,
+    // paddingVertical: 20,
+    // paddingTop: 40,
+    zIndex: 2,
+    paddingTop: 10,
+  },
+});

@@ -82,7 +82,7 @@ const CarouselNews = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.headingText}>News</Text>
+      <Text style={styles.headingText}>Noticias</Text>
       <Carousel
         loop={false}
         width={screenWidth * 0.8}
@@ -105,18 +105,21 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 150,
+    marginBottom: 20,
   },
   headingText: {
     fontSize: 34,
+    color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
-    paddingTop: 30,
+    //paddingTop: 40,
+    //padding: 20,
   },
   item: {
     backgroundColor: '#f9f9f9',
     borderRadius: 10,
-    padding: 16,
+    padding: 20,
     marginHorizontal: 8,
     shadowColor: '#000',
     shadowOffset: {width: 0, height: 2},
